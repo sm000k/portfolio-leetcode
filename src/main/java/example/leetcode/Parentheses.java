@@ -1,6 +1,7 @@
 package example.leetcode;
 
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -14,14 +15,12 @@ public class Parentheses {
         map.put('}', '{');
         map.put(']', '[');
         map.put(')', '(');
-        return map;
+        return Collections.unmodifiableMap(map);
     }
 
     public static boolean isValid(String s) {
 
-
-        if (s.isEmpty()
-                || s.length() % 2 != 0) {
+        if (s.isEmpty() || s.length() % 2 != 0) {
             return false;
         }
 
