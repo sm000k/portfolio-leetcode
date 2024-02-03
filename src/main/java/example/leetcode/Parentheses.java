@@ -1,18 +1,17 @@
 package example.leetcode;
 
+import java.util.Arrays;
 import java.util.Stack;
 
 public class Parentheses {
     public static boolean isValid(String s) {
-        if (s.length() == 0 || s.length() % 2 != 0) return false;
+        if (s.isEmpty() || s.length() % 2 != 0) return false;
 
         Stack<Character> stack = new Stack<>();
         for (int i = 0; i < s.length(); i++) {
             Character symbol = s.charAt(i);
 
-            if (symbol == '{' ||
-                    symbol == '(' ||
-                    symbol == '[') {
+            if (Arrays.asList('{', '(', '[').contains(symbol)) {
                 stack.push(symbol);
             }
 
