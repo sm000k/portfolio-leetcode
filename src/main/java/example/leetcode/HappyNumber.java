@@ -25,26 +25,26 @@ public class HappyNumber {
         return sum;
     }
 
+    static int sumDigitsSquares(Integer sum) {
+        return squareSum(fractureNumber(sum));
+    }
 
     static public boolean isHappy(Integer n) {
         Integer slowSum = n;
         Integer fastSum = n;
         do {
-            slowSum = squareSum(fractureNumber(slowSum));
-            fastSum = squareSum(fractureNumber(fastSum));
-            fastSum = squareSum(fractureNumber(fastSum));
+            slowSum = sumDigitsSquares(slowSum);
+            fastSum = sumDigitsSquares(fastSum);
+            fastSum = sumDigitsSquares(fastSum);
+
         } while (!Objects.equals(slowSum, fastSum));
 
-        if (slowSum == 1) {
-            return true;
-        } else {
-            return false;
-        }
+        return slowSum == 1;
     }
 
     public static void main(String[] args) {
-        List<Integer> TestNumbers = Arrays.asList(19, 3, 1, 103);
-        for (Integer testNumber : TestNumbers) {
+        List<Integer> testNumbers = Arrays.asList(19, 3, 1, 103);
+        for (Integer testNumber : testNumbers) {
             System.out.println(testNumber + " : " + fractureNumber(testNumber) + " = " + isHappy(testNumber));
         }
     }
