@@ -78,20 +78,14 @@ public class RemoveElement {
     }
 
     static Integer removeElement(Integer[] nums, int val) {
-        int backPointer = nums.length - 1;
-        int notValCounter = 0;
+        int newIndex = 0;
         for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == val) {
-                while (nums[backPointer] == val && backPointer >= 1) {
-                    backPointer--;
-                }
-                nums[i] = nums[backPointer];
-                if (backPointer >= 1) {
-                    backPointer--;
-                }
-            } else notValCounter++;
+            if (nums[i] != val) {
+                nums[newIndex] = nums[i];
+                newIndex++;
+            }
         }
-        return notValCounter;
+        return newIndex;
     }
 
     static class InputData {
