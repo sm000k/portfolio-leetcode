@@ -32,7 +32,7 @@ public class Haystack {
         List<InputData> inputDataList = new ArrayList<>();
         inputDataList.add(new InputData("sadbutsad", "sad"));
         inputDataList.add(new InputData("leetcode", "leeto"));
-
+        inputDataList.add(new InputData("mississippi", "issipi"));
         for (InputData inputData : inputDataList) {
             System.out.println("word:"
                     + inputData.needle
@@ -45,15 +45,18 @@ public class Haystack {
     }
 
     public static int strStr(String haystack, String needle) {
+        if (needle.length() > haystack.length()) {
+            return -1;
+        }
         int assertedWordLength = 0;
         for (int i = 0; i < haystack.length(); i++) {
 
-            if (haystack.charAt(i) == needle.charAt(0)) {
+            if (haystack.charAt(i) == needle.charAt(0) && haystack.length() - i >= needle.length()) {
                 for (int j = 0; j < needle.length(); j++) {
                     if (haystack.charAt(i + j) == needle.charAt(j)) {
                         assertedWordLength++;
-                    }else{
-                        assertedWordLength=0;
+                    } else {
+                        assertedWordLength = 0;
                         break;
                     }
                     if (assertedWordLength == needle.length()) {
