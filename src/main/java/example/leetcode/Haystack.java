@@ -48,19 +48,14 @@ public class Haystack {
         if (needle.length() > haystack.length()) {
             return -1;
         }
-        int assertedWordLength = 0;
-        for (int i = 0; i < haystack.length(); i++) {
-
-            if (haystack.charAt(i) == needle.charAt(0) && haystack.length() - i >= needle.length()) {
-                for (int j = 0; j < needle.length(); j++) {
-                    if (haystack.charAt(i + j) == needle.charAt(j)) {
-                        assertedWordLength++;
-                    } else {
-                        assertedWordLength = 0;
+        for (int haystackIndex = 0; haystackIndex < haystack.length(); haystackIndex++) {
+            if (haystack.length() - haystackIndex >= needle.length()) {
+                for (int needleIndex = 0; needleIndex < needle.length(); needleIndex++) {
+                    if (haystack.charAt(haystackIndex + needleIndex) != needle.charAt(needleIndex)) {
                         break;
                     }
-                    if (assertedWordLength == needle.length()) {
-                        return i;
+                    if (needleIndex == needle.length() - 1) {
+                        return haystackIndex;
                     }
                 }
             }
