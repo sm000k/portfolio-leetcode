@@ -32,48 +32,46 @@ import java.util.Arrays;
 public class SearchInsertPosition {
 
     public static int searchInsert(int[] nums, int target) {
-        return helper(0, nums.length - 1, target, nums);
+        return searchInRange(0, nums.length - 1, target, nums);
     }
 
-    public static int helper(int leftPosition, int rightPosition, int target, int[] nums) {
+    public static int searchInRange(int leftPosition, int rightPosition, int target, int[] nums) {
         if (leftPosition > rightPosition) {
             return leftPosition;
         }
         int midPosition = rightPosition - (rightPosition - leftPosition) / 2;
-        if (nums[midPosition] == target) return midPosition;
+        if (nums[midPosition] == target) {
+            return midPosition;
+        }
         if (target < nums[midPosition]) {
-            return helper(leftPosition, midPosition - 1, target, nums);
+            return searchInRange(leftPosition, midPosition - 1, target, nums);
         } else {
-            return helper(midPosition + 1, rightPosition, target, nums);
+            return searchInRange(midPosition + 1, rightPosition, target, nums);
         }
     }
-
+    static void printout(int[] nums, int target){
+        System.out.print("nums = " + Arrays.toString(nums));
+        System.out.print(" target = " + target);
+        System.out.println(" looked position:" + searchInsert(nums, target));
+    }
     public static void main(String[] args) {
 
 
         int[] nums = {2, 5, 6, 8, 9, 10};
         int target = 5;
-        System.out.print("nums = " + Arrays.toString(nums));
-        System.out.print(" target = " + target);
-        System.out.println(" looked position:" + searchInsert(nums, target));
+        printout(nums,target);
 
         nums = new int[]{1, 3, 5, 6};
         target = 5;
-        System.out.print("nums = " + Arrays.toString(nums));
-        System.out.print(" target = " + target);
-        System.out.println(" looked position:" + searchInsert(nums, target));
+        printout(nums,target);
 
         nums = new int[]{1, 3, 4, 5, 6, 7, 8, 9, 10};
         target = 2;
-        System.out.print("nums = " + Arrays.toString(nums));
-        System.out.print(" target = " + target);
-        System.out.println(" looked position:" + searchInsert(nums, target));
+        printout(nums,target);
 
         nums = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
         target = 11;
-        System.out.print("nums = " + Arrays.toString(nums));
-        System.out.print(" target = " + target);
-        System.out.println(" looked position:" + searchInsert(nums, target));
+        printout(nums,target);
 
     }
 }
