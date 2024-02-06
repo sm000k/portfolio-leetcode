@@ -40,7 +40,6 @@ import java.util.Arrays;
 //digits does not contain any leading 0's.
 public class PlusOne {
 
-
     static int[] expandArray(int[] array) {
 
         int[] newArray = new int[array.length + 1];
@@ -53,8 +52,9 @@ public class PlusOne {
         return newArray;
     }
 
-    static void presentSummary(int[] InputArray, int[] resultArray) {
-        System.out.println(Arrays.toString(InputArray) + "+1=" + Arrays.toString(resultArray));
+    static void unitTestPlusOne(int[] input, int[] expected) {
+        System.out.print(Arrays.toString(input) + "+1=" + Arrays.toString(expected) + " : ");
+        System.out.println(Arrays.equals(plusOne(input), expected));
     }
 
     public static int[] plusOne(int[] digits) {
@@ -78,10 +78,9 @@ public class PlusOne {
     }
 
     public static void main(String[] args) {
-
-        presentSummary(new int[]{2, 3, 4, 5}, plusOne(new int[]{2, 3, 4, 5}));
-        presentSummary(new int[]{9, 9, 9, 9}, plusOne(new int[]{9, 9, 9, 9}));
-        presentSummary(new int[]{9}, plusOne(new int[]{9}));
-        presentSummary(new int[]{4, 3, 2, 1}, plusOne(new int[]{4, 3, 2, 1}));
+        unitTestPlusOne(new int[]{2, 3, 4, 5}, new int[]{2, 3, 4, 6});
+        unitTestPlusOne(new int[]{9, 9, 9, 9}, new int[]{1, 0, 0, 0, 0});
+        unitTestPlusOne(new int[]{9}, new int[]{1, 0});
+        unitTestPlusOne(new int[]{4, 3, 2, 1}, new int[]{4, 3, 2, 2});
     }
 }
