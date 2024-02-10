@@ -9,29 +9,31 @@ import java.util.List;
 public class PascalsTriangle {
     public static List<List<Integer>> generate(int numRows) {
         List<List<Integer>> triangleRows = new ArrayList<>();
-        if (numRows == 1) return new ArrayList<>(List.of(List.of(1)));
+        if (numRows == 1) {
+            return new ArrayList<>(List.of(List.of(1)));
+        }
 
         triangleRows.add(List.of(1));
         triangleRows.add(Arrays.asList(1, 1));
-        for (int rowIndex = 2; rowIndex < numRows; rowIndex++) {
-            List<Integer> rowNumbers = new ArrayList<>(rowIndex);
-            rowNumbers.add(1);
-            int rowFulfillment = rowIndex - 1;
-            for (int fulfillmentIndex = 0; fulfillmentIndex < rowFulfillment; fulfillmentIndex++) {
-                rowNumbers.add(triangleRows.get(rowIndex - 1).get(fulfillmentIndex)
-                        + triangleRows.get(rowIndex - 1).get(fulfillmentIndex + 1));
+        for (int currentRowIndex = 2; currentRowIndex < numRows; currentRowIndex++) {
+            List<Integer> newRow = new ArrayList<>(currentRowIndex);
+            newRow.add(1);
+            int previousRowIndex = currentRowIndex - 1;
+            for (int fulfillmentIndex = 0; fulfillmentIndex < previousRowIndex; fulfillmentIndex++) {
+                newRow.add(triangleRows.get(currentRowIndex - 1).get(fulfillmentIndex)
+                        + triangleRows.get(currentRowIndex - 1).get(fulfillmentIndex + 1));
             }
-            rowNumbers.add(1);
-            triangleRows.add(rowNumbers);
+            newRow.add(1);
+            triangleRows.add(newRow);
         }
         return triangleRows;
     }
 
     static void testUnitPascalsTriangle(int input, List<List<Integer>> expected) {
         List<List<Integer>> result = generate(input);
-        System.out.println("input: "+input+" result: "+result.equals(expected));
+        System.out.println("input: " + input + " result: " + result.equals(expected));
         System.out.println("printout:");
-        for (List<Integer>row : result){
+        for (List<Integer> row : result) {
             System.out.println(row);
         }
     }
