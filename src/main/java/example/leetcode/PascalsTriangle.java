@@ -20,8 +20,10 @@ public class PascalsTriangle {
             newRow.add(1);
             int previousRowIndex = currentRowIndex - 1;
             for (int fulfillmentIndex = 0; fulfillmentIndex < previousRowIndex; fulfillmentIndex++) {
-                newRow.add(triangleRows.get(currentRowIndex - 1).get(fulfillmentIndex)
-                        + triangleRows.get(currentRowIndex - 1).get(fulfillmentIndex + 1));
+                List previousRow = triangleRows.get(currentRowIndex - 1);
+                int newElement =(Integer) previousRow.get(fulfillmentIndex)
+                        + (Integer) previousRow.get(fulfillmentIndex + 1);
+                newRow.add(newElement);
             }
             newRow.add(1);
             triangleRows.add(newRow);
