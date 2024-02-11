@@ -7,12 +7,12 @@ public class BestTimeToBuySell {
     public static int maxProfit(int[] prices) {
         int maxProfit = 0;
         int currentProfit = 0;
-        int currentleastprice = Integer.MAX_VALUE;
+        int currentLeastPrice = Integer.MAX_VALUE;
         for (int price : prices) {
-            if (currentleastprice > price) {
-                currentleastprice = price;
+            if (currentLeastPrice > price) {
+                currentLeastPrice = price;
             }
-            currentProfit = price - currentleastprice;
+            currentProfit = price - currentLeastPrice;
             if (currentProfit > maxProfit) {
                 maxProfit = currentProfit;
             }
