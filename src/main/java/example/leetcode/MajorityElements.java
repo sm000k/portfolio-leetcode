@@ -33,18 +33,18 @@ Follow-up: Could you solve the problem in linear time and in O(1) space?
 */
 public class MajorityElements {
     public static int majorityElement(int[] nums) {
-        Map<Integer, Integer> AppearedNumberCountMap = new HashMap<>();
+        Map<Integer, Integer> appearedNumberCountMap = new HashMap<>();
 
         for (int number : nums) {
-            if (AppearedNumberCountMap.containsKey(number)) {
-                AppearedNumberCountMap.put(number, AppearedNumberCountMap.get(number) + 1);
+            if (appearedNumberCountMap.containsKey(number)) {
+                appearedNumberCountMap.put(number, appearedNumberCountMap.get(number) + 1);
             } else {
-                AppearedNumberCountMap.put(number, 1);
+                appearedNumberCountMap.put(number, 1);
             }
         }
         int maxElementCount = 0;
         int majorityElement = 0;
-        for (Map.Entry<Integer, Integer> entry : AppearedNumberCountMap.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : appearedNumberCountMap.entrySet()) {
             if (entry.getValue() > maxElementCount) {
                 maxElementCount = entry.getValue();
                 majorityElement = entry.getKey();
