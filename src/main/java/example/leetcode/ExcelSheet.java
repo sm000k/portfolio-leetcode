@@ -2,7 +2,7 @@ package example.leetcode;
 
 
 
-
+//czas realizacji 20-30 min
 //https://leetcode.com/problems/excel-sheet-column-number/description/
 public class ExcelSheet {
 
