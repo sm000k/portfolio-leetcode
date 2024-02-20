@@ -1,8 +1,9 @@
 package example.leetcode;
 
-import javax.xml.stream.events.Characters;
-import java.util.*;
 
+import java.util.*;
+// 2.5h
+//https://leetcode.com/problems/group-anagrams/submissions/1181214491/?source=submission-noac
 public class GroupAnagrams {
 
     public static List<List<String>> groupAnagrams(String[] strs) {
