@@ -2,35 +2,33 @@ package example.leetcode;
 
 
 import java.util.*;
+
 // 2.5h
 //https://leetcode.com/problems/group-anagrams/submissions/1181214491/?source=submission-noac
 public class GroupAnagrams {
 
     public static List<List<String>> groupAnagrams(String[] strs) {
 
-        Map<Set<Character>, List<String>> mapOfSets = new HashMap<>();
         List<List<String>> result = new ArrayList<>();
-        int sumControl = 0;
+
+        Map<Map<Character, Integer>, List<String>> mapOfAnagrams = new HashMap<>();
         for (String word : strs) {
-            Set<Character> charactersInWordSet = new HashSet<>();
+            Map<Character, Integer> wordFingerPrint = new HashMap<>();
             for (int i = 0; i < word.length(); i++) {
-                charactersInWordSet.add(word.charAt(i));
-                sumControl += word.charAt(i);
+                wordFingerPrint.putIfAbsent(word.charAt(i), 1);
+                wordFingerPrint.put(word.charAt(i), wordFingerPrint.get(word.charAt(i)) + 1);
             }
-
-            if (!mapOfSets.containsKey(charactersInWordSet)) {
-                mapOfSets.put(charactersInWordSet, List.of(word));
+            if (!mapOfAnagrams.containsKey(wordFingerPrint)) {
+                mapOfAnagrams.put(wordFingerPrint,Arrays.asList(word));
             } else {
-
-                var temp = new ArrayList<>((mapOfSets.get(charactersInWordSet)));
+                var temp = new ArrayList<>(mapOfAnagrams.get(wordFingerPrint));
                 temp.add(word);
-                mapOfSets.put(charactersInWordSet, temp);
+                mapOfAnagrams.put(wordFingerPrint,temp);
             }
         }
-        for (Map.Entry<Set<Character>, List<String>> entry : mapOfSets.entrySet()) {
+        for (Map.Entry <Map<Character, Integer>, List<String>> entry : mapOfAnagrams.entrySet()){
             result.add(entry.getValue());
         }
-
         return result;
     }
 
