@@ -10,9 +10,9 @@ public class ExcelSheet {
     public static int titleToNumber(String columnTitle) {
         int letterPosition = columnTitle.length();
         int columnNumber = 0;
-        for (int Index = 0; Index < columnTitle.length(); Index++) {
-            int Letter = columnTitle.charAt(Index) - 64;
-            columnNumber += (int)Math.pow(26, letterPosition - 1) * Letter;
+        for (int index = 0; index < columnTitle.length(); index++) {
+            int letter = columnTitle.charAt(index) - 64;
+            columnNumber += (int)Math.pow(26, letterPosition - 1) * letter;
             letterPosition--;
         }
 
