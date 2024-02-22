@@ -23,23 +23,36 @@ public class SubsetDraft {
         }
         return output;
     }
-    public void subsetsMoje(int n){
 
+    public List<List<Integer>> subsetsMoje(int[] nums) {
+        List<List<Integer>> output = new ArrayList<>() {{
+            add(new ArrayList<Integer>());
+        }};
+
+        for (int num : nums) {
+            List<List<Integer>> subsets = new ArrayList<>();
+            for (List<Integer> curr : output) {
+                subsets.add(new ArrayList<Integer>(curr) {{
+                    add(num);
+                }});
+            }
+            for (List<Integer> curr : subsets) {
+                output.add(curr);
+            }
+        }
+
+        return output;
     }
 
     public static void main(String[] args) {
 
-
-
-
         SubsetDraft subsetDraft = new SubsetDraft();
         subsetDraft.subsets(new int[]{1, 2, 3});
-        subsetDraft.subsetsMoje(5);
-        ArrayList<Integer> lista = new ArrayList<Integer>() {
-            {
-                add(5);
-            }
-        };
+        List<List<Integer>> lists = subsetDraft.subsetsMoje(new int[]{1, 2, 3});
+        for(List<Integer> curr : lists){
+            System.out.println(curr);
+        }
+
         ArrayList<String> gfg = new ArrayList<String>() {
             {
                 add("Geeks");
@@ -47,10 +60,6 @@ public class SubsetDraft {
                 add("Geeks");
             }
         };
-        Set<Integer> set = new HashSet<>() {{
-            add(5);
-        }};
-
     }
 
 
