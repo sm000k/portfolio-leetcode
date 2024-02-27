@@ -20,6 +20,5 @@ public class fibo {
     public static void main(String[] args) {
         int fibonacci = fibonacci(3);
         System.out.println("fibonacci = " + fibonacci);
-        String s = 
     }
 }
