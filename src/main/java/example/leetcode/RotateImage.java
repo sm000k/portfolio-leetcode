@@ -4,13 +4,13 @@ public class RotateImage {
     public static void rotate(int[][] matrix) {
         int mLen = matrix[0].length;
         int temp = 0;
-//        for (int i = 0; i < mLen; i++) {
-//            for (int j = 0; j <= i; j++) {
-//                temp = matrix[mLen - 1 - i][j];
-//                matrix[mLen - 1 - i][j] = matrix[i][j];
-//                matrix[i][j] = temp;
-//            }
-//        }
+        for (int i = 0; i < mLen; i++) {
+            for (int j = 0; j <= i; j++) {
+                temp = matrix[mLen - 1 - i][j];
+                matrix[mLen - 1 - i][j] = matrix[i][j];
+                matrix[i][j] = temp;
+            }
+        }
         System.out.println("upside down");
         for (int i = 0; i < mLen; i++) {
             for (int j = 0; j <= i; j++) {
